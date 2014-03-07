@@ -41,12 +41,12 @@
     
     self.myData = [ZADataStore sharedDataStore];
     
-//    Tag *business = [self.myData createTagWithName:@"Business"];
-//    Tag *pleasure = [self.myData createTagWithName:@"Pleasure"];
-//    ToDo *sortFiles = [self.myData createToDoWithName:@"Sort files"];
-//    ToDo *dance = [self.myData createToDoWithName:@"Dance dance dance"];
-//    [self.myData addTag:business toToDo:sortFiles];
-//    [self.myData addTag:pleasure toToDo:dance];
+    Tag *business = [self.myData createTagWithName:@"Business"];
+    Tag *pleasure = [self.myData createTagWithName:@"Pleasure"];
+    ToDo *sortFiles = [self.myData createToDoWithName:@"Sort files"];
+    ToDo *dance = [self.myData createToDoWithName:@"Dance dance dance"];
+    [self.myData addTag:business toToDo:sortFiles];
+    [self.myData addTag:pleasure toToDo:dance];
     
     [self.myData fetchData];
 }
@@ -98,6 +98,25 @@
         ZAViewToDoVC *nextVC = segue.destinationViewController;
         NSIndexPath *ip = self.tableView.indexPathForSelectedRow;
         nextVC.myToDo = self.myData.toDos[ip.row];
+    }
+}
+
+- (IBAction)sortButton:(id)sender
+{
+    UIActionSheet *sortSheet = [[UIActionSheet alloc] initWithTitle:@"Sort" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"By Name", @"By Tag", nil];
+    
+    [sortSheet showInView:self.view];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0) {
+        [self.myData sortToDosByName];
+        [self.tableView reloadData];
+    } else if (buttonIndex == 1)
+    {
+        [self.myData sortToDosByTag];
+        [self.tableView reloadData];
     }
 }
 

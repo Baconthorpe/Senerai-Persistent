@@ -214,7 +214,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="To Dos" id="ooR-z4-gPy">
-                        <barButtonItem key="leftBarButtonItem" title="Sort" id="ovp-HG-m0G"/>
+                        <barButtonItem key="leftBarButtonItem" title="Sort" id="ovp-HG-m0G">
+                            <connections>
+                                <action selector="sortButton:" destination="BQ3-kB-2Ov" id="kIi-HE-erc"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="iwJ-Uz-b1f">
                             <connections>
                                 <segue destination="0Q2-pC-n9i" kind="push" id="v3G-aI-apE"/>

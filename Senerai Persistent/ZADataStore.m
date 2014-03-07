@@ -160,6 +160,18 @@
     [self updateData];
 }
 
+- (void) sortToDosByName
+{
+    NSSortDescriptor *nameDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
+    _toDos = [self.toDos sortedArrayUsingDescriptors:@[nameDescriptor]];
+}
+
+- (void) sortToDosByTag
+{
+    NSSortDescriptor *tagDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"tag.name" ascending:YES];
+    _toDos = [self.toDos sortedArrayUsingDescriptors:@[tagDescriptor]];
+}
+
 #pragma mark - Convenience Methods
 
 - (void) updateData

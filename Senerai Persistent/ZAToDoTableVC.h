@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ZAToDoTableVC : UITableViewController
+@interface ZAToDoTableVC : UITableViewController <UIActionSheetDelegate>
 
 @end

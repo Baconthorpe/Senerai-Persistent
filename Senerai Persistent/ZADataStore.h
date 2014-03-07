@@ -29,6 +29,8 @@
 - (Tag *) createTagWithName: (NSString *)name;
 - (void) addTag: (Tag *)tag
          toToDo: (ToDo *)toDo;
+- (void) sortToDosByName;
+- (void) sortToDosByTag;
 
 - (void) fetchData;
 
